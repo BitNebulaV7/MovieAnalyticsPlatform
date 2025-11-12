@@ -49,6 +49,14 @@ This project is licensed under the MIT License.
 
 ---
 
+## 📊 Database Design
+
+Here’s the Entity-Relationship Diagram (ERD) for the Movie Analytics Platform:
+
+![ERD](Screenshots/ERD_MovieDB_v1.png)
+
+---
+
 ## ✨ Author
 
 Built by Sheeva — aspiring data analyst passionate about SQL, storytelling through data, and building real-world portfolio projects.

@@ -1,11 +1,21 @@
+USE MovieDB_Local;
+GO
 
 
-CREATE TABLE Genres(
+DROP TABLE IF EXISTS MovieActors;
+DROP TABLE IF EXISTS Ratings;
+DROP TABLE IF EXISTS Movies;
+DROP TABLE IF EXISTS Actors;
+DROP TABLE IF EXISTS Genres;
+
+CREATE TABLE Genres
+(
     GenreID INT PRIMARY KEY IDENTITY(1,1),
     GenreName NVARCHAR(50) NOT NULL
 )
 
-CREATE TABLE Movies(
+CREATE TABLE Movies
+(
     MovieID INT PRIMARY KEY IDENTITY(1,1),
     Title NVARCHAR(100) NOT NULL,
     ReleaseYear INT,
@@ -14,20 +24,23 @@ CREATE TABLE Movies(
     Revenue BIGINT
 )
 
-CREATE TABLE Actors(
+CREATE TABLE Actors
+(
     ActorID INT PRIMARY KEY IDENTITY(1,1),
     FullName NVARCHAR(100),
     BirthDate DATE,
     Nationality NVARCHAR(50)
 )
 
-CREATE TABLE MovieActors(
+CREATE TABLE MovieActors
+(
     MovieID INT FOREIGN KEY REFERENCES Movies(MovieID),
     ActorID INT FOREIGN KEY REFERENCES Actors(ActorID),
     PRIMARY KEY(MovieID, ActorID)
 )
 
-CREATE TABLE Ratings (
+CREATE TABLE Ratings
+(
     RatingID INT PRIMARY KEY IDENTITY(1,1),
     MovieID INT FOREIGN KEY REFERENCES Movies(MovieID),
     Source NVARCHAR(50),
