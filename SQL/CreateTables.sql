@@ -1,12 +1,19 @@
 USE MovieDB_Local;
 GO
 
-
-DROP TABLE IF EXISTS MovieActors;
-DROP TABLE IF EXISTS Ratings;
-DROP TABLE IF EXISTS Movies;
-DROP TABLE IF EXISTS Actors;
-DROP TABLE IF EXISTS Genres;
+CREATE TABLE IMDB_Movies
+(
+    MovieID INT PRIMARY KEY IDENTITY(1,1),
+    Title NVARCHAR(200),
+    IMDbRating DECIMAL(3,1),
+    Year INT,
+    Certificate NVARCHAR(20),
+    Genre NVARCHAR(50),
+    Director NVARCHAR(100),
+    StarCast NVARCHAR(MAX),
+    MetaScore INT,
+    DurationMinutes INT
+);
 
 CREATE TABLE Genres
 (
