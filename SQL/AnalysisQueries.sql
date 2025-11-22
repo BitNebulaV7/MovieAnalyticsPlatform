@@ -30,3 +30,19 @@ SELECT G.GenreName
 FROM Genres AS G
     LEFT JOIN Movies AS M ON G.GenreID = M.GenreID
 WHERE M.MovieID IS NULL
+
+
+SELECT M.Title,A.FullName
+FROM Movies AS M
+INNER JOIN MovieActors AS MA ON MA.MovieID = M.MovieID
+INNER JOIN Actors AS A ON MA.ActorID = A.ActorID
+ORDER BY M.Title,A.FullName
+
+
+SELECT M.Title,
+COALESCE(M.Revenue,0) - COALESCE(M.Budget,0) AS Profit,
+ROUND(AVG(R.Score),1) AS AVGRating
+FROM Movies AS M
+LEFT JOIN Ratings AS R ON M.MovieID = R.MovieID
+GROUP BY M.Title,M.Revenue,M.Budget
+ORDER BY Profit DESC, AVGRating DESC
