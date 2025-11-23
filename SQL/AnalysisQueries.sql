@@ -65,3 +65,12 @@ SELECT M.Title,
 FROM Movies AS M
     LEFT JOIN Ratings AS R ON M.MovieID = R.MovieID
 GROUP BY M.Title, M.Budget,M.Revenue
+
+
+SELECT G.GenreName,
+    SUM(COALESCE(M.Revenue,0) - COALESCE(M.Budget,0)) AS TotalProfit,
+    CAST(AVG(R.Score) AS DECIMAL(4,1)) AS AvgRating
+FROM Movies AS M
+    LEFT JOIN Ratings AS R ON M.MovieID = R.MovieID
+    LEFT JOIN Genres AS G ON M.GenreID = G.GenreID
+GROUP BY G.GenreName;
