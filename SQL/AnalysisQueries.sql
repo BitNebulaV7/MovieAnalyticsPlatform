@@ -74,3 +74,11 @@ FROM Movies AS M
     LEFT JOIN Ratings AS R ON M.MovieID = R.MovieID
     LEFT JOIN Genres AS G ON M.GenreID = G.GenreID
 GROUP BY G.GenreName;
+
+
+SELECT M.ReleaseYear,
+    SUM(COALESCE(M.Revenue,0) - COALESCE(M.Budget,0)) AS MoviesProftPerYear,
+    CAST(AVG(R.Score) AS decimal(4,1)) AS AvgRating
+FROM Movies AS M
+    LEFT JOIN Ratings AS R ON M.MovieID = R.MovieID
+GROUP BY M.ReleaseYear
